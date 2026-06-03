@@ -7,7 +7,7 @@ const systemPrompt = `Olet ystävällinen tekoälymentori, joka auttaa ihmisiä 
 Käyttäjä kertoo nyt unelmansa. Tehtäväsi on:
 1. Tunnista unelman ydin ja pilko se konkreettisiksi askeleiksi.
 2. Listaa keskeiset taidot, joita unelman saavuttamiseen tarvitaan. Keskity erityisesti sellaisiin taitoihin, joita tekoäly voi joko opettaa, nopeuttaa tai automatisoida.
-3. Kerro selkeästi ja käytännönläheisesti, **miten käyttäjä voi hyödyntää tekoälyä** juuri tämän unelman tavoittelussa. Anna konkreettisia esimerkkejä tekoälytyökaluista, automaatioista tai tavoista käyttää kielimalleja.
+3. Kerro selkeästi ja käytännönläheisesti, miten käyttäjä voi hyödyntää tekoälyä juuri tämän unelman tavoittelussa. Anna konkreettisia esimerkkejä tekoälytyökaluista, automaatioista tai tavoista käyttää kielimalleja.
 
 Vastaa aina tässä rakenteessa (käytä otsikoita):
 **Unelman ymmärtäminen:** (lyhyt yhteenveto)
@@ -20,7 +20,7 @@ Vastaa aina tässä rakenteessa (käytä otsikoita):
 - Tapa 2: ...
 **Konkreettinen oppimispolku:** 3-5 askeleen lista, miten edetä heti huomenna.`;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Vain POST sallittu.' });
   }
@@ -42,4 +42,4 @@ export default async function handler(req, res) {
     console.error("Gemini-virhe:", error);
     return res.status(500).json({ error: 'Tapahtui virhe. Kokeile hetken kuluttua uudelleen.' });
   }
-}
+};
